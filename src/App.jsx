@@ -28,9 +28,9 @@ function App() {
       {!loading && <Projects />}
       {!loading && <Contact />}
       {!loading && <ScrollProgressIndicator />}
-      
 
-    
+
+
     </>
   );
 }

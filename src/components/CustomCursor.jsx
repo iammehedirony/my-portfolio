@@ -1,78 +1,80 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [outerCursorPosition, setOuterCursorPosition] = useState({ x: 0, y: 0 });
+  // ── Mouse position stored in a ref (NOT state) to avoid re-render loops ──
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const cursorRef = useRef(null);
+  const outerCursorRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
-
+  // ── Animate both cursors in a single rAF loop using refs + direct DOM ────
   useEffect(() => {
     if (isMobile) return;
 
     let animationFrameId;
-    let outerAnimationFrameId;
+    const innerPos = { x: 0, y: 0 };
+    const outerPos = { x: 0, y: 0 };
 
     const updateMousePosition = (e) => {
-      setMousePosition({ x: e?.clientX, y: e?.clientY });
+      mousePosition.current = { x: e.clientX, y: e.clientY };
     };
 
-    const animateCursor = () => {
-      setCursorPosition(prev => ({
-        x: prev?.x + (mousePosition?.x - prev?.x) * 0.15,
-        y: prev?.y + (mousePosition?.y - prev?.y) * 0.15
-      }));
-      animationFrameId = requestAnimationFrame(animateCursor);
-    };
+    const animate = () => {
+      const target = mousePosition.current;
 
-    const animateOuterCursor = () => {
-      setOuterCursorPosition(prev => ({
-        x: prev?.x + (mousePosition?.x - prev?.x) * 0.08,
-        y: prev?.y + (mousePosition?.y - prev?.y) * 0.08
-      }));
-      outerAnimationFrameId = requestAnimationFrame(animateOuterCursor);
+      // Lerp inner cursor (faster follow)
+      innerPos.x += (target.x - innerPos.x) * 0.15;
+      innerPos.y += (target.y - innerPos.y) * 0.15;
+
+      // Lerp outer cursor (slower follow)
+      outerPos.x += (target.x - outerPos.x) * 0.08;
+      outerPos.y += (target.y - outerPos.y) * 0.08;
+
+      // Direct DOM mutation — zero React re-renders
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${innerPos.x}px, ${innerPos.y}px)`;
+      }
+      if (outerCursorRef.current) {
+        outerCursorRef.current.style.transform = `translate(${outerPos.x}px, ${outerPos.y}px)`;
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     document.addEventListener('mousemove', updateMousePosition);
-    animationFrameId = requestAnimationFrame(animateCursor);
-    outerAnimationFrameId = requestAnimationFrame(animateOuterCursor);
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       document.removeEventListener('mousemove', updateMousePosition);
       cancelAnimationFrame(animationFrameId);
-      cancelAnimationFrame(outerAnimationFrameId);
     };
-  }, [mousePosition , isMobile]);
+  }, [isMobile]);
 
+  // ── Mobile detection ─────────────────────────────────────────────────────
   useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768); // 768px এর নিচে হলে mobile ধরলাম
-  };
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-  handleResize(); // প্রথমবার লোড হলে চেক করবে
-  window.addEventListener('resize', handleResize);
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
-  return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-if (isMobile) return null;
-
+  if (isMobile) return null;
 
   return (
     <>
       {/* Inner cursor - small lime filled circle */}
       <div 
+        ref={cursorRef}
         className="custom-cursor-inner"
-        style={{
-          transform: `translate(${cursorPosition?.x}px, ${cursorPosition?.y}px)`
-        }}
       />
       {/* Outer cursor - larger thin outlined circle */}
       <div 
+        ref={outerCursorRef}
         className="custom-cursor-outer"
-        style={{
-          transform: `translate(${outerCursorPosition?.x}px, ${outerCursorPosition?.y}px)`
-        }}
       />
     </>
   );

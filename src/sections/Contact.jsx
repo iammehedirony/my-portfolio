@@ -1,42 +1,67 @@
-
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { FaSquareXTwitter } from 'react-icons/fa6';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa6';
+import { IoIosArrowForward } from 'react-icons/io';
 
-const Contact = () => {
+function Contact() {
   return (
-     <motion.div  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.2 }}
-  transition={{ duration: 0.6, ease: "easeOut" }} id='contact' className="flex flex-col items-center justify-center w-full mt-20">
-      <div>
-        <h2 className="lg:text-8xl mb-6 md:text-5xl text-2xl font-bold text-center">
-          Get In Touch.
-        </h2>
-      </div>
+    <>
+      <motion.section
+        className="relative py-20 overflow-hidden"
+        id="contact"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#1DCD9F]/5 via-transparent to-transparent pointer-events-none"></div>
+        <div className="max-w-screen-xl mx-auto px-4 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="text-center md:text-left">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tighter">
+                Get In <span className="text-[#1DCD9F]">Touch.</span>
+              </h2>
+              <p className="text-lg text-gray-400 max-w-md">
+                Let's build something exceptional. I'm currently open to new opportunities and collaborations in the cloud and fullstack space.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <a href="https://github.com/stackeymehedi" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaGithub /></span>
+                  <span className="text-xl font-semibold">GitHub</span>
+                </div>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+              </a>
+              <a href="https://linkedin.com/in/stackeymehedi" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaLinkedinIn /></span>
+                  <span className="text-xl font-semibold">LinkedIn</span>
+                </div>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+              </a>
+              <a href="https://facebook.com/mehedihasan.tech" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaFacebook /></span>
+                  <span className="text-xl font-semibold">Facebook</span>
+                </div>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+              </a>
 
-      <div className='flex justify-center items-center mb-10'>
-        <p className="text-gray-400 text-md text-center  w-full md:w-[40%]">
-         let’s do something awesome together. Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I look forward to connecting with you!
-        </p>
-      </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
-      <div className='flex justify-center items-center gap-6 text-4xl'>
-         <a  href="https://www.linkedin.com/in/rony-sda" target="_blank" rel="noopener noreferrer"><FaLinkedin color="#3CCF91"/></a>
-      
-          <a href="https://x.com/rony_sda" target="_blank" rel="noopener noreferrer"><FaSquareXTwitter color="#3CCF91"/></a>
-      
-          <a  href="https://github.com/rony-sda" target="_blank" rel="noopener noreferrer"><FaGithub color="#3CCF91"/></a>
-      </div>
-      
-      <div className='flex justify-center mt-20 mb-10 text-sm text-gray-500'>
-        Copyright © 2025 Mehedi Hasan. All rights reserved.
-      </div>
-    </motion.div>
+      <footer className="w-full py-12 border-t border-gray-800">
+        <div className='flex justify-center text-sm text-gray-500'>
+          Copyright © 2025 Mehedi Hasan. All rights reserved.
+        </div>
+      </footer>
+    </>
   );
-};
+}
 
 export default Contact;
 
 
- 
