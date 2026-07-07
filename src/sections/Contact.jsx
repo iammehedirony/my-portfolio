@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa6';
-import { IoIosArrowForward } from 'react-icons/io';
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa6";
+import { IoIosArrowForward } from "react-icons/io";
 
 function Contact() {
   return (
@@ -22,39 +22,67 @@ function Contact() {
                 Get In <span className="text-[#1DCD9F]">Touch.</span>
               </h2>
               <p className="text-lg text-gray-400 max-w-md">
-                Let's build something exceptional. I'm currently open to new opportunities and collaborations in the cloud and fullstack space.
+                Let's build something exceptional. I'm currently open to new
+                opportunities and collaborations in the cloud and fullstack
+                space.
               </p>
             </div>
             <div className="flex flex-col gap-4">
-              <a href="https://github.com/stackeymehedi" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+              <a
+                href="https://github.com/iammehedirony"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]"
+              >
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaGithub /></span>
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors">
+                    <FaGithub />
+                  </span>
                   <span className="text-xl font-semibold">GitHub</span>
                 </div>
-                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1">
+                  <IoIosArrowForward />
+                </span>
               </a>
-              <a href="https://linkedin.com/in/stackeymehedi" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+              <a
+                href="https://linkedin.com/in/iammehedirony"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]"
+              >
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaLinkedinIn /></span>
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors">
+                    <FaLinkedinIn />
+                  </span>
                   <span className="text-xl font-semibold">LinkedIn</span>
                 </div>
-                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1">
+                  <IoIosArrowForward />
+                </span>
               </a>
-              <a href="https://facebook.com/mehedihasan.tech" target='_blank' rel="noopener noreferrer" className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]">
+              <a
+                href="https://facebook.com/iammehedirony"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 rounded-xl border border-gray-700 bg-[#1C1C1C] hover:border-[#1DCD9F] transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,205,159,0.1)]"
+              >
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors"><FaFacebook /></span>
+                  <span className="material-symbols-outlined text-3xl text-gray-400 group-hover:text-[#1DCD9F] transition-colors">
+                    <FaFacebook />
+                  </span>
                   <span className="text-xl font-semibold">Facebook</span>
                 </div>
-                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1"><IoIosArrowForward /></span>
+                <span className="material-symbols-outlined text-gray-400 group-hover:text-[#1DCD9F] transition-transform group-hover:translate-x-1">
+                  <IoIosArrowForward />
+                </span>
               </a>
-
             </div>
           </div>
         </div>
       </motion.section>
 
       <footer className="w-full py-12 border-t border-gray-800">
-        <div className='flex justify-center text-sm text-gray-500'>
+        <div className="flex justify-center text-sm text-gray-500">
           Copyright © 2025 Mehedi Hasan. All rights reserved.
         </div>
       </footer>
@@ -63,5 +91,3 @@ function Contact() {
 }
 
 export default Contact;
-
-
